@@ -14,7 +14,7 @@ class Frame extends Component {
   }
   componentDidMount() {
     setInterval(() => {
-      this.iframe.postMessage(this.state, "http://localhost:3000")
+      this.iframe.postMessage(this.state, window.location.href)
     }, 1000)
     window.addEventListener('message', e => {
       this.setState({level: this.state.level + 1})
