@@ -1,17 +1,16 @@
-let cc = 'red'
-document.body.style.backgroundColor = cc
-document.querySelector('h1')
-.addEventListener('click', e => {
-  cc = cc === 'red'
-    ? 'yellow'
-    : 'red'
-  document.body.style.backgroundColor = cc
-})
+// window.addEventListener('message', e => {
+//   document.body.children[0].innerHTML = e.data.level
+// })
 
-window.addEventListener('message', e => {
-  document.body.children[0].innerHTML = e.data.level
-})
+// setInterval(() => {
+//   parent.postMessage('test', window.location.href)
+// }, 1000)
 
-setInterval(() => {
-  parent.postMessage('test', window.location.href)
-}, 1000)
+const winner = e => parent.postMessage({win: true}, window.location.href)
+const btn = document.querySelector('#btn')
+
+btn.addEventListener('click', winner, false)
+setTimeout(e => {
+  btn.removeEventListener('click', winner, false)
+  parent.postMessage({win: false, msg: 'Timeout.'}, window.location.href)
+}, 3000)

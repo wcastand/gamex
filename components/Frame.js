@@ -5,7 +5,7 @@ class Frame extends Component {
     super(props)
     this.state = {
       url: '',
-      level: 0,
+      win: null,
     }
   }
 
@@ -17,7 +17,7 @@ class Frame extends Component {
       this.iframe.postMessage(this.state, window.location.href)
     }, 1000)
     window.addEventListener('message', e => {
-      this.setState({level: this.state.level + 1})
+      this.setState(e.data)
     })
   }
   _setRef(i) {
@@ -25,15 +25,33 @@ class Frame extends Component {
       this.iframe = i.contentWindow
   }
   render() {
-    return (
-      <iframe
-        ref={this._setRef.bind(this)}
-        style={{outline: 'none', border: 'none'}}
-        width="500"
-        height="300"
-        src={this.state.url}
-      />
-    )
+    const { win } = this.state
+    switch(win) {
+      case true:
+        return (
+          <div>
+            <h1> you win ! </h1>
+            <button onClick={ () => this.setState({win: null})} > Replay </button>
+          </div>
+        )
+      case false:
+        return (
+          <div>
+            <h1> you loose ! </h1>
+            <button onClick={ () => this.setState({win: null})} > Retry </button>
+          </div>
+        )
+      default:
+        return (
+          <iframe
+            ref={this._setRef.bind(this)}
+            style={{outline: 'none', border: 'none'}}
+            width="500"
+            height="300"
+            src={this.state.url}
+          />
+        )
+    }
   }
 }
 

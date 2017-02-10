@@ -1,6 +1,7 @@
 {
   "name": "gamex",
   "version": "1.0.0",
+  "description": "Proof of concept about game in an iframe",
   "repository": {},
   "license": "MIT",
   "scripts": {
