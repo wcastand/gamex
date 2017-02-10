@@ -9,5 +9,5 @@ const btn =
 btn.addEventListener('click', winner, false)
 setTimeout(e => {
   btn.removeEventListener('click', winner, false)
-  parent.postMessage({win: false, msg: 'Timeout.'}, window.location.href)
+  parent.postMessage({win: false}, window.location.href)
 }, 3000)
