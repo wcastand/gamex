@@ -1,13 +1,10 @@
-// window.addEventListener('message', e => {
-//   document.body.children[0].innerHTML = e.data.level
-// })
+// Event -> Void
+const winner =
+  e => parent.postMessage({win: true}, window.location.href)
 
-// setInterval(() => {
-//   parent.postMessage('test', window.location.href)
-// }, 1000)
-
-const winner = e => parent.postMessage({win: true}, window.location.href)
-const btn = document.querySelector('#btn')
+// Void -> DOMNode
+const btn =
+  document.querySelector('#btn')
 
 btn.addEventListener('click', winner, false)
 setTimeout(e => {
