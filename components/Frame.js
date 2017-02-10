@@ -13,12 +13,7 @@ class Frame extends Component {
     this.setState({url: `/static/games/${this.props.src}/index.html`})
   }
   componentDidMount() {
-    setInterval(() => {
-      this.iframe.postMessage(this.state, window.location.href)
-    }, 1000)
-    window.addEventListener('message', e => {
-      this.setState(e.data)
-    })
+    window.addEventListener('message', e => this.setState(e.data))
   }
   _setRef(i) {
     if(i !== null)
