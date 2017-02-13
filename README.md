@@ -1,5 +1,5 @@
-# nanogame
-Nano game proof of concept
+# gameX
+gameX proof of concept (iframe nano game)
 
 #Test
 
